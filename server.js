@@ -8,10 +8,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // we esablish the routes to our javascript route files
-require('./routes/apiRoutes.js')(app);
-require('./routes/htmlRoutes.js')(app);
+const apiRoutes = require('./routes/apiRoutes');
+const htmlRoutes = require('./routes/htmlRoutes');
 
-
+app.use('/api', apiRoutes);
+app.use('/', htmlRoutes);
 app.use(express.static('public'));
 
 // this tells the application what route the server is on
