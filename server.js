@@ -11,9 +11,10 @@ app.use(express.json());
 const apiRoutes = require('./routes/apiRoutes');
 const htmlRoutes = require('./routes/htmlRoutes');
 
+app.use(express.static('public'));
 app.use('/api', apiRoutes);
 app.use('/', htmlRoutes);
-app.use(express.static('public'));
+
 
 // this tells the application what route the server is on
 app.listen(PORT, () => {
